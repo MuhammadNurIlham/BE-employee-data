@@ -1,6 +1,7 @@
 package com.example.server.services;
 
 
+import java.util.List;
 // import java.util.List;
 import java.util.Optional;
 
@@ -66,8 +67,24 @@ public class KaryawanService {
     //     return karyawan;
     // }
 
+    // search by nik
+    public Karyawan findByNik(String nik){
+        return karyawanRepo.findByNik(nik);
+    }
+
+    // search by name
+    public Karyawan findByName(String name) {
+        return karyawanRepo.findByName(name);
+    }
+
+    // search by full name
+    public List<Karyawan> findByNameLike(String name){
+        return karyawanRepo.findByNameLike("%"+name+"%");
+    }
+
     public Karyawan create(@Valid Karyawan karyawan){
         return null;
     }
    
 }
+

@@ -46,7 +46,15 @@ public class Karyawan implements Serializable {
     public Karyawan(){
     };
 
-    public Karyawan(Long id, @NotEmpty(message = "nik tidak boleh kosong") String nik, @NotEmpty(message = "nama tidak boleh kosong") String name, @NotEmpty(message = "address tidak boleh kosong") String address, @NotEmpty(message = "gender tidak boleh kosong") String gender, @NotEmpty(message = "tanggal lahir tidak boleh kosong") String birth, @NotEmpty(message = "negara tidak boleh kosong") String country){
+    public Karyawan(
+        Long id, 
+        @NotEmpty(message = "nik tidak boleh kosong") String nik, 
+        @NotEmpty(message = "nama tidak boleh kosong") String name, 
+        @NotEmpty(message = "address tidak boleh kosong") String address, 
+        @NotEmpty(message = "gender tidak boleh kosong") String gender,
+        @NotEmpty(message = "tanggal lahir tidak boleh kosong") String birth,
+        @NotEmpty(message = "negara tidak boleh kosong") String country
+        ){
         this.id = id;
         this.nik = nik;
         this.name = name;

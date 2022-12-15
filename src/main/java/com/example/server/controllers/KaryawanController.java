@@ -1,5 +1,7 @@
 package com.example.server.controllers;
 
+import java.util.List;
+
 // import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.server.dto.ResponseData;
+import com.example.server.dto.SearchKaryawan;
 import com.example.server.models.entities.Karyawan;
 import com.example.server.services.KaryawanService;
 
@@ -92,4 +95,24 @@ public class KaryawanController {
     // public Karyawan getKaryawanByName(@RequestBody com.example.server.dto.SearchKaryawan SearchKaryawan){
     //     return karyawanService.findByName(SearchKaryawan.getSearchKey());
     // }
+
+    // search by nik
+    @PostMapping("/search/nik")
+    public Karyawan getKaryawanByNik(@RequestBody SearchKaryawan searchKaryawan){
+return karyawanService.findByNik(searchKaryawan.getSearchKey());
+    }
+
+    // search by name
+    @PostMapping("/search/name")
+    public Karyawan getKaryawanByName(@RequestBody SearchKaryawan searchKaryawan) {
+        return karyawanService.findByName(searchKaryawan.getSearchKey());
+    }
+
+    // search by full name
+    @PostMapping("/search/fullname")
+    public List<Karyawan> getKaryawanByNameLike(@RequestBody SearchKaryawan searchKaryawan) {
+        return karyawanService.findByNameLike(searchKaryawan.getSearchKey());
+    }
+
+
 }
