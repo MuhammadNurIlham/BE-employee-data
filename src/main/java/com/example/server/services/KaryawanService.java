@@ -46,45 +46,42 @@ public class KaryawanService {
         karyawanRepo.deleteById(id);
     }
 
-    // for search
-    // public List<Karyawan> findByName(String name){
-    //     return karyawanRepo.findByNameContains(name);
-    // }
+    public List<Karyawan> findEmployeeByName(String name){
+        return karyawanRepo.findByNameContains(name);
+    }
 
-    // public Karyawan findByName(String name){
-    //     return karyawanRepo.searchKaryawanByName(name);
-    // }
+    public List<Karyawan> findDataEmployees(String nik, String name){
+        List<Karyawan> karyawanData = null;
 
-    // public List<Karyawan> searchKaryawan(String nik, String name){
-    //     List<Karyawan> karyawan = null;
-    //     // if (nik != "" && name != ""){
-    //     //     karyawan = karyawanRepo.searchKaryawanByNIK(nik);
-    //     // } else if (nik == "" && name != ""){
-    //     //     karyawan = karyawanRepo.searchKaryawanByName(name);
-    //     // } else {
-    //     //     karyawan = karyawanRepo.searchKaryawanByNIKandName(nik, name);
-    //     // }
-    //     return karyawan;
-    // }
+        if(nik != "" && name == ""){
+            karyawanData = karyawanRepo.findByNik(nik);
+        } else if (nik == "" && name != "") {
+            karyawanData = karyawanRepo.findByName(name);
+        } else {
+            karyawanData = karyawanRepo.findByNikAndName(nik, name);
+        }
+        return karyawanData;
+        }
+
+        public Karyawan create(@Valid Karyawan karyawan){
+            return null;
+        }
 
     // search by nik
-    public Karyawan findByNik(String nik){
-        return karyawanRepo.findByNik(nik);
-    }
+    // public Karyawan findByNik(String nik){
+    //     return karyawanRepo.findByNik(nik);
+    // }
 
     // search by name
-    public Karyawan findByName(String name) {
-        return karyawanRepo.findByName(name);
-    }
+    // public Karyawan findByName(String name) {
+    //     return karyawanRepo.findByName(name);
+    // }
 
     // search by full name
-    public List<Karyawan> findByNameLike(String name){
-        return karyawanRepo.findByNameLike("%"+name+"%");
-    }
+    // public List<Karyawan> findByNameLike(String name){
+    //     return karyawanRepo.findByNameLike("%"+name+"%");
+    // }
 
-    public Karyawan create(@Valid Karyawan karyawan){
-        return null;
-    }
    
 }
 

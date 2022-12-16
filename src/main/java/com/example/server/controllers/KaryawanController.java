@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.server.dto.ResponseData;
-import com.example.server.dto.SearchKaryawan;
+// import com.example.server.dto.SearchKaryawan;
 import com.example.server.models.entities.Karyawan;
 import com.example.server.services.KaryawanService;
 
@@ -86,10 +86,10 @@ public class KaryawanController {
         karyawanService.removeOne(id);
     }
 
-    // @PostMapping("/search")
-    // public List<Karyawan> search(@RequestBody Karyawan karyawan){
-    //     return karyawanService.searchKaryawan(karyawan.getNik(), karyawan.getName());
-    // }
+    @PostMapping("/search")
+    public List<Karyawan> search(@RequestBody Karyawan karyawan){
+        return karyawanService.findDataEmployees(karyawan.getNik(), karyawan.getName());
+    }
 
     // @PostMapping("/search/name")
     // public Karyawan getKaryawanByName(@RequestBody com.example.server.dto.SearchKaryawan SearchKaryawan){
@@ -97,22 +97,22 @@ public class KaryawanController {
     // }
 
     // search by nik
-    @PostMapping("/search/nik")
-    public Karyawan getKaryawanByNik(@RequestBody SearchKaryawan searchKaryawan){
-return karyawanService.findByNik(searchKaryawan.getSearchKey());
-    }
+//     @PostMapping("/search/nik")
+//     public Karyawan getKaryawanByNik(@RequestBody SearchKaryawan searchKaryawan){
+// return karyawanService.findByNik(searchKaryawan.getSearchKey());
+//     }
 
     // search by name
-    @PostMapping("/search/name")
-    public Karyawan getKaryawanByName(@RequestBody SearchKaryawan searchKaryawan) {
-        return karyawanService.findByName(searchKaryawan.getSearchKey());
-    }
+    // @PostMapping("/search/name")
+    // public Karyawan getKaryawanByName(@RequestBody SearchKaryawan searchKaryawan) {
+    //     return karyawanService.findByName(searchKaryawan.getSearchKey());
+    // }
 
     // search by full name
-    @PostMapping("/search/fullname")
-    public List<Karyawan> getKaryawanByNameLike(@RequestBody SearchKaryawan searchKaryawan) {
-        return karyawanService.findByNameLike(searchKaryawan.getSearchKey());
-    }
+    // @PostMapping("/search/fullname")
+    // public List<Karyawan> getKaryawanByNameLike(@RequestBody SearchKaryawan searchKaryawan) {
+    //     return karyawanService.findByNameLike(searchKaryawan.getSearchKey());
+    // }
 
 
 }

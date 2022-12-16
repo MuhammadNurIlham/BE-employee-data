@@ -2,8 +2,9 @@ package com.example.server.models.entities;
 
 import java.io.Serializable;
 // import java.time.LocalDate;
+import java.time.LocalDate;
 
-// import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,6 +13,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name="tbl_karyawan")
@@ -36,9 +38,10 @@ public class Karyawan implements Serializable {
     @NotEmpty(message = "gender tidak boleh kosong")
     private String gender;
 
-    // @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
-    @NotEmpty(message = "tanggal lahir tidak boleh kosong")
-    private String birth;
+    // @NotEmpty(message = "tanggal lahir tidak boleh kosong")
+    @NotNull
+    @JsonFormat(pattern="yyyy-MM-dd")
+    private LocalDate birth;
 
     @NotEmpty(message = "negara tidak boleh kosong")
     private String country;
@@ -52,7 +55,7 @@ public class Karyawan implements Serializable {
         @NotEmpty(message = "nama tidak boleh kosong") String name, 
         @NotEmpty(message = "address tidak boleh kosong") String address, 
         @NotEmpty(message = "gender tidak boleh kosong") String gender,
-        @NotEmpty(message = "tanggal lahir tidak boleh kosong") String birth,
+        @NotEmpty(message = "tanggal lahir tidak boleh kosong") LocalDate birth,
         @NotEmpty(message = "negara tidak boleh kosong") String country
         ){
         this.id = id;
@@ -105,11 +108,11 @@ public class Karyawan implements Serializable {
         this.gender = gender;
     }
 
-    public String getBirth(){
+    public LocalDate getBirth(){
         return birth;
     }
 
-    public void setBirth(String birth){
+    public void setBirth(LocalDate birth){
         this.birth = birth;
     }
 
