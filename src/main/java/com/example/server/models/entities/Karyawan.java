@@ -24,18 +24,18 @@ public class Karyawan implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty(message = "nik tidak boleh kosong")
+    @NotEmpty(message = "NIK not empty")
     @Column(nullable = false, unique = true)
     private String nik;
 
-    @NotEmpty(message = "nama tidak boleh kosong")
+    @NotEmpty(message = "Name not empty")
     private String name;
 
-    @NotEmpty(message = "address tidak boleh kosong")
+    @NotEmpty(message = "Address not empty")
     @Column(length = 500)
     private String address;
 
-    @NotEmpty(message = "gender tidak boleh kosong")
+    @NotEmpty(message = "Gender not empty")
     private String gender;
 
     // @NotEmpty(message = "tanggal lahir tidak boleh kosong")
@@ -43,7 +43,7 @@ public class Karyawan implements Serializable {
     @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate birth;
 
-    @NotEmpty(message = "negara tidak boleh kosong")
+    @NotEmpty(message = "Country not empty")
     private String country;
 
     public Karyawan(){
@@ -51,12 +51,12 @@ public class Karyawan implements Serializable {
 
     public Karyawan(
         Long id, 
-        @NotEmpty(message = "nik tidak boleh kosong") String nik, 
-        @NotEmpty(message = "nama tidak boleh kosong") String name, 
-        @NotEmpty(message = "address tidak boleh kosong") String address, 
-        @NotEmpty(message = "gender tidak boleh kosong") String gender,
-        @NotEmpty(message = "tanggal lahir tidak boleh kosong") LocalDate birth,
-        @NotEmpty(message = "negara tidak boleh kosong") String country
+        @NotEmpty(message = "NIK not empty") String nik, 
+        @NotEmpty(message = "Name not empty") String name, 
+        @NotEmpty(message = "Address not empty") String address, 
+        @NotEmpty(message = "Gender not empty") String gender,
+        @NotNull LocalDate birth,
+        @NotEmpty(message = "Country not empty") String country
         ){
         this.id = id;
         this.nik = nik;
